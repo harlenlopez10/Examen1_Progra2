@@ -16,15 +16,16 @@ import javax.swing.JOptionPane;
 public class Muelle {
 
     private final ArrayList<Barco> listaBarcos;
+    public static String nombre;
+    public static int capacidadPasajeros;
+    public static double precioBoleto;
 
     public Muelle() {
         this.listaBarcos = new ArrayList<>();
     }
 
     public void agregarBarco(String tipo) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el nombre del barco:");
-        String nombre = scanner.nextLine();
+        
         if (!esNombreUnico(nombre)) {
             System.out.println("El nombre del barco ya existe. Intente nuevamente.");
             return;
@@ -35,9 +36,9 @@ public class Muelle {
             listaBarcos.add(new BarcoPesquero(nombre, tipoPesquero));
         } else if (tipo.equalsIgnoreCase("PASAJERO")) {
             System.out.println("Ingrese la capacidad de pasajeros:");
-            int capacidadPasajeros = scanner.nextInt();
+            
             System.out.println("Ingrese el precio del boleto:");
-            double precioBoleto = scanner.nextDouble();
+            
             listaBarcos.add(new BarcoPasajero(nombre, capacidadPasajeros, precioBoleto));
         } else {
             System.out.println("Tipo de barco no reconocido.");
